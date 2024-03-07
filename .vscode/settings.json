@@ -1,0 +1,6 @@
+{
+    "files.autoSave": "onWindowChange",
+    "editor.fontSize": 15,
+    "editor.cursorStyle": "underline",
+    "editor.wordWrap": "on"
+}

@@ -1,0 +1,34 @@
+db.createCollection("empleados");
+
+db.createCollection("pacientes");
+
+db.createCollection("signos_vitales");
+
+// Estructura empleados
+db.empleados.insertOne({
+    NombreCompleto: "Nombre del Empleado",
+    Cargo: "Cargo del Empleado",
+    Codigo: 12345
+});
+
+// Estructura Pacientes
+db.pacientes.insertOne({
+    NombreCompleto: "Nombre del Paciente",
+    Edad: 30,
+    Diagnostico: "Diagnóstico del Paciente",
+    FechaNacimiento: new Date("1990-01-01"),
+    HistorialMedico: "Historial Médico del Paciente",
+    Alergias: ["Alergia 1", "Alergia 2"]
+});
+
+// Estructura signos vitales
+db.signos_vitales.insertOne({
+    PacienteID: ObjectId("id_del_paciente"),
+    Temperatura: 37.5,
+    Talla: 170,
+    PresionArterial: "120/80",
+    Oxigenacion: 98,
+    LatidosPorMinuto: 75,
+    RespiracionesPorMinuto: 16,
+    FechaHora: new Date()
+});
