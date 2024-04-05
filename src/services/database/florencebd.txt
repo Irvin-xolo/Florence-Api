@@ -1,29 +1,33 @@
+user: irvinxolo
+password: ecnerolf_1973
+irl: mongodb+srv://irvinxolo:ecnerolf_1973@cluster0.hoqaxwy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
+
 db.createCollection("empleados");
 
 db.createCollection("pacientes");
 
-db.createCollection("signos_vitales");
+db.createCollection("signos");
 
 // Estructura empleados
 db.empleados.insertOne({
-    NombreCompleto: "Nombre del Empleado",
-    Cargo: "Cargo del Empleado",
+    NombreCompleto: "Irvin de Jesus Xolo Poxtan",
+    Cargo: "Administrador",
     Codigo: 12345
 });
 
 // Estructura Pacientes
 db.pacientes.insertOne({
-    NombreCompleto: "Nombre del Paciente",
-    Edad: 30,
+    NombreCompleto: "Irvin de Jesus Xolo Poxtan",
     Diagnostico: "Diagnóstico del Paciente",
-    FechaNacimiento: new Date("1990-01-01"),
+    FechaNacimiento: new Date("2003-13-03"),
     HistorialMedico: "Historial Médico del Paciente",
     Alergias: ["Alergia 1", "Alergia 2"]
 });
 
 // Estructura signos vitales
-db.signos_vitales.insertOne({
-    PacienteID: ObjectId("id_del_paciente"),
+db.signos.insertOne({
+    PacienteID: ObjectId("65e9f721f0290fe345c70903"),
     Temperatura: 37.5,
     Talla: 170,
     PresionArterial: "120/80",

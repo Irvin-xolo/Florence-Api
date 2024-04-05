@@ -1,5 +1,5 @@
 {
     "empleados": "/v1/empleados",
     "pacientes": "/v1/pacientes",
-    "signos": "/v1/signos"
+    "diagnostico": "/v1/diagnostico"
 }

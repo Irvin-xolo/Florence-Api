@@ -4,4 +4,6 @@ dist/
 *.log
 
 # Ignorar archivos:
-
+*.env
+florencebd.txt
+florencebd.sql

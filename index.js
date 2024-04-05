@@ -1,14 +1,16 @@
 const  express = require('express');
-//const routes = require('');
+const routes = require('./src/routes');
+require ('dotenv').config();
+const {init} = require("./src/services/serviceLocator/composerLocator");
 
-
-const server = express();
+const server = express()
 
 server.use(express.json());
 
-//routes(server);
+routes(server);
+init();
 
-server.listen(8000, () => {
+server.listen(process.env.PORT, () => {
     console.log('Servidor iniciado en el puerto 9000!')
 })
 
