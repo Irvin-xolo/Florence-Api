@@ -1,9 +1,9 @@
 # Ignorar archivos:
 node_modules/
 dist/
-*.log
-
+.log
+test
 # Ignorar archivos:
-*.env
+.env
 florencebd.txt
 florencebd.sql
