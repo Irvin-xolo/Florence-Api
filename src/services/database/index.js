@@ -17,7 +17,7 @@ class Database{
             user: process.env.FLORENCEMYSQL_DB_USER,
             password: process.env.FLORENCEMYSQL_DB_PASSWORD,
             database : process.env.FLORENCEMYSQL_DB_NAME,
-            port:3307
+            port:process.env.FLORENCEMYSQL_DB_PORT
         };
 
         this.instance = await mysql.createConnection(dbConfig)
