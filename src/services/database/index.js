@@ -3,6 +3,8 @@
 const mysql = require('mysql2/promise');
 require('dotenv').config()
 
+
+
 class Database{
     static instance;
     constructor(){
@@ -14,6 +16,7 @@ class Database{
             return this.instance;
         }
         const dbConfig = {
+            host: process.env.FLORENCEMYSQL_DB_HOST,
             user: process.env.FLORENCEMYSQL_DB_USER,
             password: process.env.FLORENCEMYSQL_DB_PASSWORD,
             database : process.env.FLORENCEMYSQL_DB_NAME,
