@@ -61,9 +61,20 @@ function RegistrarNuevoPaciente(request, response){
     });
 }
 
+function ListarPacientes(request, response){
+    Controller.ListarPacientesController()
+    .then((data) => {
+        response.status(200).json(data);
+    })
+    .catch((error) => { 
+        response.status(500).send(error.message);
+    })
+}
+
 
 router.get("/nombre/:nombre", getPacienteHistorial);
 router.get("/paciente/:paciente", getPacienteInfo);
 router.post("/", RegistrarNuevoPaciente);
+router.get("/", ListarPacientes);
 
 module.exports = router;

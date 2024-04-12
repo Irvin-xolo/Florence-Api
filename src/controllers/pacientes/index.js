@@ -71,9 +71,24 @@ async function RegistrarNuevoPaciente(paciente){
     })
 }
 
+async function ListarPacientesController(){
+    //Retorna una lista de los pacientes que ya han sido registrados previamente
+    const PacientesInstance = composerLocator.getPacientesInstance();
+    const{
+        rows,
+        fields
+    } = await PacientesInstance.ListarPacientes();
+
+    return{
+        rows,
+        fields
+    };
+}
+
 
 module.exports = {
     getPacienteHistorial,
     getPacienteInfoController,
-    RegistrarNuevoPaciente
+    RegistrarNuevoPaciente,
+    ListarPacientesController
 }

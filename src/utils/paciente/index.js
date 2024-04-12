@@ -62,6 +62,17 @@ class Pacientes {
             fields,
         };
     }
+
+
+    async ListarPacientes() {
+        const[rows, fields] = await this.database.execute(
+            "CALL ListarPacientes();"
+        );
+        return{
+            rows,
+            fields
+        };
+    }
 }
 
 module.exports = Pacientes;
