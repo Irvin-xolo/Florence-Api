@@ -9,3 +9,4 @@ export const FLORENCEMYSQL_DB_PORT = process.env.FLORENCEMYSQL_DB_PORT || 3307
 export const FLORENCEMYSQL_DB_USER = process.env.FLORENCEMYSQL_DB_USER || 'root'
 
 export const FLORENCEMYSQL_DB_PASSWORD = process.env.FLORENCEMYSQL_DB_PASSWORD || ''
+

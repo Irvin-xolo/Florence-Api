@@ -1,17 +1,15 @@
 //Mongodb Conexion
-const mongoose =  require('mongoose');
-require ("dotenv").config();
+const mongoose = require('mongoose');
+require("dotenv").config();
 
-const Conexion = async () => {
+const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.FLORENCE_DB_URLI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log('Conexión exitosa a MongoDB Atlas');
+        await mongoose.connect(process.env.MONGODB_URL);
+        console.log("Mongodb is Connected")
+        console.log("{'name': 'cluster0'}")
     } catch (error) {
-        console.error('Error al conectar a MongoDB Atlas:', error.message);
+        console.log(error);
     }
-};
+}
 
-module.exports = Conexion;
+module.exports = { connectDB };

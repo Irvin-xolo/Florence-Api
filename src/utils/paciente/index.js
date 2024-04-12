@@ -6,6 +6,7 @@ class Pacientes {
     }
     
     async getPacienteHistorial(nombre){
+        console.log(nombre);
         const [rows, fields] = await this.database.execute(
             "CALL HistorialPaciente(?);", [nombre]
         );

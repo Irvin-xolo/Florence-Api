@@ -7,3 +7,4 @@ dist/
 .env
 florencebd.txt
 florencebd.sql
+conexions.txt

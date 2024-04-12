@@ -1,6 +1,7 @@
 const express = require("express");
 const Controller = require("../controllers/diagnostico/index");
 
+
 const router = express.Router();
 
 function getDiagnosticoByName(request, response) {
