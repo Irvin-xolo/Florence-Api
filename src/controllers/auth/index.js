@@ -41,36 +41,34 @@ Controller.register = async (req, res) => {
 }
 
 Controller.login = async (req, res) => {
-    const {nombre, codigo} =req.body
+    const { nombre, codigo } = req.body
 
-   try {
+    Empleado.findOne({ nombre }, (err, user) => {
+        if(err){
+            console.error(err);
+            return res.status(500).send('Error en el servidor');
+        }
 
-    const empleadoExiste = await Empleado.findOne({nombre});
+        if (!empleadoExiste) {
+            return res.status(400).send('Empleado no registrado');
+        }
 
-    if (!empleadoExiste) {
-        return res.status(400).json({message: "Empleado no registrado"});
-    }
-    const coinciden = await bcrypt.compare(codigo, empleadoExiste.codigo);
-    if (!coinciden) return res.status(400).json({message: "Codigo incorrecto!"});
+        bcrypt.compare(codigo, empleadoExiste.codigo, (err, result) => {
+            if(err){
+                console.error(err);
+                return res.status(500).send('Error en el servidor');
+            }
 
-    
-    const token = await tokenGenerator({
-        id: empleadoExiste._id
-    })
+            if(!result){
+                return res.status(400).send('Los datos introducidos no coinciden');
+            }
 
-    res.cookie('token', token);
-       
-    res.json({
-        id: empleadoExiste._id,
-        nombre: empleadoExiste.nombre,
-        cargo: empleadoExiste.cargo,
-        createdAt: empleadoExiste.createdAt,
-        updatedAt: empleadoExiste.updatedAt,
-    });
+            req.session.loggedIn = true;
+            req.session.nombre = nombre;
 
-   } catch (error) {
-    res.status(500).send(error.message);
-   }
+            res.redirect('/Dashboard');
+        })
+    })
 }
 
 Controller.logout = (req, res) => {
@@ -96,5 +94,14 @@ Controller.session = async (req, res) => {
         updatedAt: empleadoFound.updatedAt,
     });
 }
+
+Controller.redireccionar = (req, res) => {
+    if(req.session.loggedIn){
+        res.send('Dashboard')
+    } else {
+        res.redirect('/Login')
+    }
+}
+
 
 module.exports = Controller;

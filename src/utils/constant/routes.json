@@ -3,5 +3,6 @@
     "pacientes": "/v1/pacientes",
     "diagnostico": "/v1/diagnostico",
     "personal" : "/v1/personal",
+    "documents" : "/v1/documents",
     "auth": "/v1/auth"
 }

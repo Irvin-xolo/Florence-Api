@@ -10,7 +10,7 @@ const PersonalNetwork = require("../network/personalNetwork")
 
 const AuthNetwork = require("../network/authNetwork")
 
-//const DocumentsNetwork = require("../network/documentsNetwork");
+const DocumentsNetwork = require("../network/documentsNetwork");
 
 function routes(server){
     server.use(Routes.pacientes, PacientesNetwork)
@@ -18,7 +18,7 @@ function routes(server){
     server.use(Routes.diagnostico, DiagnosticoNetwork)
     server.use(Routes.personal, PersonalNetwork)
     server.use(Routes.auth, AuthNetwork)
-   // server.use(Routes.documents, DocumentsNetwork)
+    server.use(Routes.documents, DocumentsNetwork)
 }
 
 module.exports = routes;
