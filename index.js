@@ -7,10 +7,17 @@ const { connectDB } = require('./src/services/database/conexion.js');
 const cookie = require('cookie-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const session = require('express-session')
 
 const server = express()
 
 connectDB();
+
+server.use(session({
+    secret: 'florence_hash',
+    resave: false,
+    saveUninitialized: false
+}));
 
 server.use(morgan('dev'));
 

@@ -41,35 +41,31 @@ Controller.register = async (req, res) => {
 }
 
 Controller.login = async (req, res) => {
-    const { nombre, codigo } = req.body
+    const { nombre, codigo } = req.body;
 
-    Empleado.findOne({ nombre }, (err, user) => {
-        if(err){
-            console.error(err);
-            return res.status(500).send('Error en el servidor');
-        }
+    try {
+        const empleadoExiste = await Empleado.findOne({ nombre });
 
         if (!empleadoExiste) {
             return res.status(400).send('Empleado no registrado');
         }
 
-        bcrypt.compare(codigo, empleadoExiste.codigo, (err, result) => {
-            if(err){
-                console.error(err);
-                return res.status(500).send('Error en el servidor');
-            }
+        const coinciden = await bcrypt.compare(codigo, empleadoExiste.codigo);
 
-            if(!result){
-                return res.status(400).send('Los datos introducidos no coinciden');
-            }
+        if (!coinciden) {
+            return res.status(400).send('Los datos introducidos no coinciden');
+        } 
 
-            req.session.loggedIn = true;
-            req.session.nombre = nombre;
-
-            res.redirect('/Dashboard');
-        })
-    })
+        req.session.loggedIn = true;
+        req.session.nombre = nombre;
+        res.redirect('/Dashboard');
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).send(error);
+    }
 }
+
 
 Controller.logout = (req, res) => {
     res.cookie("token", "", {
@@ -97,7 +93,7 @@ Controller.session = async (req, res) => {
 
 Controller.redireccionar = (req, res) => {
     if(req.session.loggedIn){
-        res.send('Dashboard')
+        res.send('/Dashboard')
     } else {
         res.redirect('/Login')
     }
