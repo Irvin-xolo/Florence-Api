@@ -27,6 +27,7 @@ async function getDiagnosticoByNameController(nombre){
     };
 
 }   
+
 async function InsertarDiagnostico(DataDiagnostico){
     //Inserta un nuevo diagnostico cuando se le pasa un Nombre y los datos del diagnostico
     const{

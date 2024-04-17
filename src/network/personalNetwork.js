@@ -1,6 +1,5 @@
 const express = require("express");
-const Controller = require("../controllers/personal/index");
-//const authRequired = require('../middlewares/validarToken'); 
+const Controller = require("../controllers/personal/index"); 
 
 const router = express.Router();
 

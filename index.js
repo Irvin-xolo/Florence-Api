@@ -1,13 +1,23 @@
 const  express = require('express');
+
 const routes = require('./src/routes');
+
 require ('dotenv').config();
+
 const {init} = require("./src/services/serviceLocator/composerLocator");
+
 const morgan = require('morgan');
+
 const { connectDB } = require('./src/services/database/conexion.js');
+
 const cookie = require('cookie-parser');
+
 const cookieParser = require('cookie-parser');
+
 const cors = require('cors');
-const session = require('express-session')
+
+const session = require('express-session');
+
 
 const server = express()
 

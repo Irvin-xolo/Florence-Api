@@ -58,7 +58,7 @@ Controller.login = async (req, res) => {
 
         req.session.loggedIn = true;
         req.session.nombre = nombre;
-        res.redirect('/Dashboard');
+        res.send('/Dashboard');
         
     } catch (error) {
         console.error(error);

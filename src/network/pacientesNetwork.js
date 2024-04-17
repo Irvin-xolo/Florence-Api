@@ -14,7 +14,6 @@ function getPacienteInfo(request, response){
     });
 }
 
-
 function getPacienteHistorial(request, response){
     const nombre = request.params.nombre;
     Controller.getPacienteHistorial(nombre)
@@ -25,7 +24,6 @@ function getPacienteHistorial(request, response){
         response.status(500).send(error.message);
     });
 }
-
 
 function RegistrarNuevoPaciente(request, response){
     const {

@@ -10,6 +10,6 @@ router.post("/register", Controller.register);
 router.post("/login", Controller.login);
 router.post("/logout", Controller.logout);
 router.get("/session", authRequired, Controller.session);
-router.get("/redireccionar", Controller.redireccionar);
+router.get("/Dashboard", Controller.redireccionar);
 
 module.exports = router;
